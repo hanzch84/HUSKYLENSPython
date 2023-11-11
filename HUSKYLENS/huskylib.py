@@ -81,7 +81,7 @@ class HuskyLensLibrary:
                 parity=serial.PARITY_NONE,
                 stopbits=serial.STOPBITS_ONE,
                 bytesize=serial.EIGHTBITS,
-                timeout=.5
+                #timeout=.5
             )
             self.huskylensSer.dtr = False
             self.huskylensSer.rts = False
@@ -95,9 +95,9 @@ class HuskyLensLibrary:
             time.sleep(.5)
             self.knock()
             # self.huskylensSer.timeout=5
-            self.huskylensSer.flushInput()
-            self.huskylensSer.flushOutput()
-            self.huskylensSer.flush()
+            #self.huskylensSer.flushInput()
+            #self.huskylensSer.flushOutput()
+            #self.huskylensSer.flush()
 
         elif (proto == "I2C"):
             import smbus
@@ -107,8 +107,8 @@ class HuskyLensLibrary:
     def writeToHuskyLens(self, cmd):
         self.lastCmdSent = cmd
         if(self.proto == "SERIAL"):
-            self.huskylensSer.flush()
-            self.huskylensSer.flushInput()
+            #self.huskylensSer.flush()
+            #self.huskylensSer.flushInput()
             self.huskylensSer.write(cmd)
         else:
             self.huskylensSer.write_i2c_block_data(self.address, 12, list(cmd))
@@ -214,14 +214,14 @@ class HuskyLensLibrary:
                     return ret
             except:
                 if(self.checkOnceAgain):
-                    self.huskylensSer.timeout=5
+                    #self.huskylensSer.timeout=5
                     self.checkOnceAgain=False
-                    self.huskylensSer.timeout=.5
+                    #self.huskylensSer.timeout=.5
                     return self.processReturnData()
                 print("Read response error, please try again")
-                self.huskylensSer.flushInput()
-                self.huskylensSer.flushOutput()
-                self.huskylensSer.flush()
+                #self.huskylensSer.flushInput()
+                #self.huskylensSer.flushOutput()
+                #self.huskylensSer.flush()
                 return []
 
     def convert_to_class_object(self,data,isBlock):
@@ -316,7 +316,7 @@ class HuskyLensLibrary:
         return self.processReturnData()
 
     def savePictureToSDCard(self):
-        self.huskylensSer.timeout=5
+        #self.huskylensSer.timeout=5
         cmd = self.cmdToBytes(commandHeaderAndAddress+"003040")
         self.writeToHuskyLens(cmd)
         return self.processReturnData()
