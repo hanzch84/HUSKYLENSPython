@@ -6,9 +6,9 @@ import sys
 pygame.init()
 
 # 화면 크기 설정
-screen_width = 1100
-screen_height = 700
-screen = pygame.display.set_mode((screen_width, screen_height))
+screen_width = 1280
+screen_height = 768
+screen = pygame.display.set_mode((screen_width, screen_height),pygame.FULLSCREEN)
 
 students = {1:"MinKyoung", 2:"YoonSeo", 3:"HanNa", 4:"SiWon"}
 
@@ -24,6 +24,21 @@ sensortivity = 20
 sensor = 0
 while True:
     try:
+        # 이벤트 루프를 사용하여 키보드 입력 처리
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            
+            # 'q' 키를 누르면 프로그램 종료
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    pygame.quit()
+                    sys.exit()
+
+        # 마우스 포인터 숨기기
+        pygame.mouse.set_visible(False)
+        
         faces = huskyLens.blocks()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
