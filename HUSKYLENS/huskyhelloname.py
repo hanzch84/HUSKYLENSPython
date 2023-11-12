@@ -8,7 +8,7 @@ def main():
 
     # pygame 초기화
     pygame.init()
-    size = (2560, 1440)
+    size = (1300, 700)
     screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
 
     font = pygame.font.Font(None, 144)
