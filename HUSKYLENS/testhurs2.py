@@ -13,7 +13,7 @@ screen = pygame.display.set_mode((screen_width, screen_height),pygame.FULLSCREEN
 students = {1:"Min Kyoung", 2:"Yoon Seo", 3:"Han Na", 4:"Si Won"}
 
 # 폰트 설정
-font = pygame.font.Font(None, 176)
+font = pygame.font.Font(None, 192)
 
 # HuskyLens 객체를 생성합니다.
 huskyLens = HuskyLensLibrary("I2C", "", address=0x32)

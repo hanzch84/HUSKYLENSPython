@@ -69,7 +69,7 @@ while True:
                 pygame.display.update()
         else:
             # 얼굴 데이터가 없을 경우 텍스트를 초기화하고 알파값을 다시 0으로 설정하여 사라지게 함
-            text = ""
+            text = "Nice to Meet you!"
 
             # 알파값을 부드럽게 감소시킴
             if alpha > 0:
